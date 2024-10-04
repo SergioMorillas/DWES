@@ -1,0 +1,31 @@
+table,
+td,
+th {
+    border: 1px solid #595959;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 3px;
+    width: 30px;
+    height: 25px;
+}
+
+th {
+    background: #00008b;
+    color: #fbf8f0;
+    width: 25%;
+}
+
+.par {
+    background: #b3d3f5;
+}
+
+.impar {
+    background: #44cff2;
+}
+.titulo{
+    font-weight: bolder;
+    display:inline-block;
+}

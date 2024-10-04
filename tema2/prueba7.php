@@ -1,0 +1,43 @@
+<?php
+$esAdulto = true;
+$tieneLicencia = false;
+$esEmpleado = true;
+$esEstudiante = false;
+$tienePermiso = true;
+$esMayoDeEdad = true;
+
+$resultado1 = ($esAdulto && $tieneLicencia) || (!$esEstudiante && $tienePermiso);
+$esAdulto = true;
+$tieneLicencia = false;
+$esEmpleado = true;
+$esEstudiante = false;
+$tienePermiso = true;
+$esMayoDeEdad = true;
+$resultado2 = ($esEmpleado || $tieneLicencia) && ($esMayoDeEdad == $esAdulto);
+$esAdulto = true;
+$tieneLicencia = false;
+$esEmpleado = true;
+$esEstudiante = false;
+$tienePermiso = true;
+$esMayoDeEdad = true;
+$resultado3 = (!$tieneLicencia && $esAdulto) || ($esEmpleado xor $esEstudiante);
+$esAdulto = true;
+$tieneLicencia = false;
+$esEmpleado = true;
+$esEstudiante = false;
+$tienePermiso = true;
+$esMayoDeEdad = true;
+$resultado4 = ($esEstudiante != $esEmpleado) && ($tienePermiso || !$esMayoDeEdad);
+$esAdulto = true;
+$tieneLicencia = false;
+$esEmpleado = true;
+$esEstudiante = false;
+$tienePermiso = true;
+$esMayoDeEdad = true;
+$resultado5 = ($esAdulto === $esMayoDeEdad) && (!$esEmpleado || $tienePermiso && $tieneLicencia);
+
+echo "Resultado 1 " . var_dump($resultado1) . "\n";
+echo "Resultado 2 " . var_dump($resultado2) . "\n";
+echo "Resultado 3 " . var_dump($resultado3) . "\n";
+echo "Resultado 4 " . var_dump($resultado4) . "\n";
+echo "Resultado 5 " . var_dump($resultado5) . "\n";
