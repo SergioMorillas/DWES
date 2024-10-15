@@ -54,11 +54,9 @@ class Contador {
         self::$contador++;
     }
 
-
     public static function getContador(){
         return self::$contador;
     }
-
 }
 
 $persona = new Persona("Sergio", 22);
