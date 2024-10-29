@@ -60,8 +60,8 @@ for ($i = 0; $i < 100; $i++) {
     }
 }
 
-echo "    </tbody>
-                    </table>\n";
+echo "</tbody>
+</table>\n";
 asort($numeros);
 
 $pequenio = array_shift($numeros);
