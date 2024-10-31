@@ -48,7 +48,7 @@ for ($i=0; $i < 11; $i++) {
     $aux = new Persona($faker->name, $faker->phoneNumber, $i**2);
     $personas[$aux->id] = $aux;
 }
-$menu = <<< 'fin'
+$menu = <<< fin
 1. Mostrar el primer cliente.
 2. Mostrar el último cliente.
 3. Mostrar el siguiente cliente.
