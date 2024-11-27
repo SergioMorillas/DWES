@@ -14,6 +14,7 @@
             height: 100%;
         }
         .container {
+            margin-top:20px;
             background: white;
             padding: 20px;
             border-radius: 8px;
@@ -68,7 +69,7 @@
     <div class="container">
         <h1>Estadísticas del Quijote</h1>
         <form method="post" action="quijote.php">
-            <label for="palabra">Ingresa una palabra:</label>
+            <label for="palabra">Ingresa una palabra o varias palabras separadas por comas:</label>
             <input type="text" id="palabra" name="palabra">
             <button type="submit">Buscar</button>
         </form>
@@ -79,16 +80,24 @@
             include 'funciones.php';
             
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $palabra = strtolower($_POST['palabra']);
-                $palabra = quitarTildes($palabra);
+                $palabras = strtolower($_POST['palabra']);
+                $palabras = quitarTildes($palabras);
+                $palabraList = array_map('trim', explode(',', $palabras)); // Dividir en palabras y quitar espacios
 
                 $array = leerArchivo("QuijoteDeLaMancha.txt");
                 $arrayMod = eliminarPalabras($array);
 
-                if (empty($palabra)) {
+                if (empty($palabras[0])) {
                     $data = $arrayMod; // Mostrar todas las palabras
                 } else {
-                    $data = isset($arrayMod[$palabra]) ? [$palabra => $arrayMod[$palabra]] : [];
+                    $data = [];
+                    foreach ($palabraList as $palabra) {
+                        if (isset($arrayMod[$palabra])) {
+                            $data[$palabra] = $arrayMod[$palabra];
+                        } else {
+                            $data[$palabra] = 0;
+                        }
+                    }
                 }
             } else {
                 // Mostrar todas las palabras al cargar la página por primera vez

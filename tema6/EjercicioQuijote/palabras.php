@@ -14,6 +14,7 @@
             height: 100%;
         }
         .container {
+            margin-top:20px;
             background: white;
             padding: 20px;
             border-radius: 8px;
@@ -32,7 +33,7 @@
         label, input, button {
             margin: 10px 0;
         }
-        input[type="file"], button {
+        input[type="file"], input[type="text"], button {
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ddd;
@@ -72,23 +73,49 @@
             <input type="file" id="file" name="file" required>
             <button type="submit">Analizar</button>
         </form>
+        
+        <?php if (isset($_POST['filename'])): ?>
+        <form method="post" action="palabras.php">
+            <input type="hidden" name="filename" value="<?php echo $_POST['filename']; ?>">
+            <input type="hidden" name="data" value="<?php echo $_POST['data']; ?>">
+            <label for="palabra">Ingresa una palabra o varias palabras separadas por comas:</label>
+            <input type="text" id="palabra" name="palabra">
+            <button type="submit">Buscar</button>
+        </form>
+        <h2>Resultados del archivo: <?php echo $_POST['filename']; ?></h2>
+        <table>
+            <tr><th>Palabra</th><th>Frecuencia</th></tr>
+            <?php
+            include 'funciones.php';
 
-        <?php
-        if (isset($_POST['filename'])) {
-            echo "<h2>Resultados del archivo: {$_POST['filename']}</h2>";
-            echo "<table>";
-            echo "<tr><th>Palabra</th><th>Frecuencia</th></tr>";
+            $data = json_decode(base64_decode($_POST['data']), true);
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['palabra'])) {
+                $palabras = strtolower($_POST['palabra']);
+                $palabras = quitarTildes($palabras);
+                $palabraList = array_map('trim', explode(',', $palabras)); // Dividir en palabras y quitar espacios
 
-            if (isset($_POST['data'])) {
-                $data = json_decode(base64_decode($_POST['data']), true);
-                foreach ($data as $palabra => $frecuencia) {
-                    echo "<tr><td>{$palabra}</td><td>{$frecuencia}</td></tr>";
+                if (empty($palabras)) {
+                    $resultData = $data; // Mostrar todas las palabras
+                } else {
+                    $resultData = [];
+                    foreach ($palabraList as $palabra) {
+                        if (isset($data[$palabra])) {
+                            $resultData[$palabra] = $data[$palabra];
+                        } else {
+                            $resultData[$palabra] = 0;
+                        }
+                    }
                 }
+            } else {
+                $resultData = $data; // Mostrar todas las palabras al cargar la página por primera vez
             }
 
-            echo "</table>";
-        }
-        ?>
+            foreach ($resultData as $palabra => $frecuencia) {
+                echo "<tr><td>{$palabra}</td><td>{$frecuencia}</td></tr>";
+            }
+            ?>
+        </table>
+        <?php endif; ?>
     </div>
 </body>
 </html>
