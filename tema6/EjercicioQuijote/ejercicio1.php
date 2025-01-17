@@ -15,7 +15,7 @@ NOTA: Lista de stopwords están dentro de el fichero stop_words.txt -->
 function leerQuijote()
 {
     $palabras = [];
-    $fp = fopen("QuijoteDeLaMancha.txt", "r");
+    $fp = fopen("J.K. Rowling - Harry Potter 1 - La Piedra Filosofal.txt", "r");
     while (!feof($fp)) {
         $line = fgets($fp);
         $linee = explode(" ", $line);

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['palabra'])) {
     }
 
     $array = leerArchivo($filePath);
-    $arrayMod = eliminarPalabras($array);
+    $arrayMod = ($array);
 
     $resultado = isset($arrayMod[$palabra]) ? $arrayMod[$palabra] : 0;
 

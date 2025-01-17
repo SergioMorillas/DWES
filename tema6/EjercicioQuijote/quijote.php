@@ -85,7 +85,7 @@
                 $palabraList = array_map('trim', explode(',', $palabras)); // Dividir en palabras y quitar espacios
 
                 $array = leerArchivo("QuijoteDeLaMancha.txt");
-                $arrayMod = eliminarPalabras($array);
+                $arrayMod = ($array);
 
                 if (empty($palabras[0])) {
                     $data = $arrayMod; // Mostrar todas las palabras
@@ -101,8 +101,8 @@
                 }
             } else {
                 // Mostrar todas las palabras al cargar la página por primera vez
-                $array = leerArchivo("QuijoteDeLaMancha.txt");
-                $arrayMod = eliminarPalabras($array);
+                $array = leerArchivo("QuijoteDeLaMancha.txt");  
+                $arrayMod = ($array);
                 $data = $arrayMod;
             }
 

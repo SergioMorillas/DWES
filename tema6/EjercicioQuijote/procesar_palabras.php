@@ -9,9 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
         $fileName = $file['name'];
 
         $array = leerArchivo($filePath);
-        $arrayMod = eliminarPalabras($array);
 
-        $data = base64_encode(json_encode($arrayMod));
+        $data = base64_encode(json_encode($array));
         
         echo "<form id='results' method='post' action='palabras.php'>";
         echo "<input type='hidden' name='filename' value='{$fileName}'>";

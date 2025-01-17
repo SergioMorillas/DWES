@@ -1,0 +1,23 @@
+Ferretería Gonzalez Miranda
+Logroño 26001
+941353213
+05/12/20244
+
+Estimados señores:
+
+Me dirijo a ustedes con el fin de realizar un pedido de piezas para nuestra operación. 
+A continuación, detallamos los artículos que necesitamos adquirir:
+
+#########1,##Pieza BD,#########1
+d A]	
+[Código B]	[Nombre B]	[Cantidad B]	
+...	...	...	...	...
+
+
+El pago se realizará mediante transferencia, según los términos acordados previamente.
+
+Agradecemos de antemano su atención y colaboración.
+Atentamente,
+
+Jefe de ventas
+Ferretería Gonzalez Miranda

@@ -1,0 +1,50 @@
+[
+    {
+        "nombre": "Pieza J",
+        "cantidad": "20",
+        "precio": "7.40",
+        "reposicion": "30\r\n"
+    },
+    {
+        "nombre": "Pieza O",
+        "cantidad": "26",
+        "precio": "21.00",
+        "reposicion": "30\r\n"
+    },
+    {
+        "nombre": "Pieza W",
+        "cantidad": "44",
+        "precio": "22.10",
+        "reposicion": "45\r\n"
+    },
+    {
+        "nombre": "Pieza AA",
+        "cantidad": "11",
+        "precio": "12.40",
+        "reposicion": "40\r\n"
+    },
+    {
+        "nombre": "Pieza AM",
+        "cantidad": "21",
+        "precio": "9.40",
+        "reposicion": "30\r\n"
+    },
+    {
+        "nombre": "Pieza AR",
+        "cantidad": "35",
+        "precio": "19.20",
+        "reposicion": "40\r\n"
+    },
+    {
+        "nombre": "Pieza AZ",
+        "cantidad": "3",
+        "precio": "10.40",
+        "reposicion": "25\r\n"
+    },
+    {
+        "nombre": "Pieza BD",
+        "cantidad": "1",
+        "precio": "9.20",
+        "reposicion": "25"
+    }
+]
