@@ -1,4 +1,25 @@
-Sergio@$2y$10$A/u9b.f2.OGK2.rhGhqyk.hpo55.OqJRpzU5rni4pYT8t8T5ZD022@Administrador
 Sergio Morillas@$2y$10$eLSvsPW6hOD0WmWmXR1OHuD38Q9UHyhMe7lLV2Y1Y2HTHV2p8Jt9i@Administrador
 rata@$2y$10$xRk4KsZMaU46pKzV9eoQae13jbpp8MYpyZQV6SzFYRB7ZR5K9Uotu@Administrativo
 manolo@$2y$10$wltrGcGcLzoOEk9mJvw8v.Mya3vsOdtYxFmEZZYBOYd0L20i1uWTe@Cliente
+1@$2y$10$veRLOFP8imuZIUEP1u.dcO7Q3er/Gpd0MA3quUbcmbAN0PH0xG7ZK@Administrador
+2@$2y$10$I6UvaXHcB5BQ/Bh0W7c1Huscr1Q22X/ubPizS5I1CUWyKSBvm3KI.@Administrador
+3@$2y$10$eaM17q1QHBrUjP./T/8qyeZY7aezkxfFDKgRa6CO05NL9kc5o21eu@Administrador
+4@$2y$10$5pH2OBKGulrh3A7rhNxwpOWS6/Ym5YpEGqe5YEX1AD0hNsJ/j8eA.@Administrador
+5@$2y$10$0hXjJGxjf8.63mP94DM16u9X0KUZgSa1cfKcLE6WfixdG4L82I4uO@Administrador
+6@$2y$10$PJ9HXqK57B4VMeIWQTmks.p9WHVgmQCe0Bdhanv5hfBygp4gAk0aG@Administrador
+7@$2y$10$mCNlc/JCJKupciOpPQ1yL.4iVOd53nI.lXIkbouDMOOI4aGEMmUaG@Administrador
+8@$2y$10$u.JM/dvL6CttRtFBwl9unOqdL1/.C/AvTGLhGhBtre1.ebnENbLCu@Administrador
+9@$2y$10$9tJAUJqgUOmMsy8oVMEwuebfhazhR.ubKMP.EuWSguGeCdf8hTP6G@Administrador
+1@$2y$10$677cw01J5BV6fNGmkP5opeJ59buKINs28OsLQkA0Yi5rlS6pPEGqa@Administrador
+
+
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('Juan', 'Pérez Gómez', '1990-01-01', 'juan.perez', '$2y$10$veRLOFP8imuZIUEP1u.dcO7Q3er/Gpd0MA3quUbcmbAN0PH0xG7ZK', 'grupo1');
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('María', 'López Sanchez', '1985-05-15', 'maria.lopez', '$2y$10$I6UvaXHcB5BQ/Bh0W7c1Huscr1Q22X/ubPizS5I1CUWyKSBvm3KI.', 'grupo2');
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('Carlos', 'García Fernández', '1978-09-23', 'carlos.garcia', '$2y$10$eaM17q1QHBrUjP./T/8qyeZY7aezkxfFDKgRa6CO05NL9kc5o21eu', 'grupo3');
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('Ana', 'Martínez Gómez', '1995-12-12', 'ana.martinez', '$2y$10$5pH2OBKGulrh3A7rhNxwpOWS6/Ym5YpEGqe5YEX1AD0hNsJ/j8eA.', 'grupo1');
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('Sergio', 'Morillas Carmona', '1988-03-30', 'admin', '$2y$10$0hXjJGxjf8.63mP94DM16u9X0KUZgSa1cfKcLE6WfixdG4L82I4uO', 'grupo2');
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('Carmen', 'Gómez Fernández', '1992-07-07', 'carmen.gomez', '$2y$10$PJ9HXqK57B4VMeIWQTmks.p9WHVgmQCe0Bdhanv5hfBygp4gAk0aG', 'grupo3');
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('Jorge', 'Díaz Rojas', '1975-11-19', 'jorge.diaz', '$2y$10$mCNlc/JCJKupciOpPQ1yL.4iVOd53nI.lXIkbouDMOOI4aGEMmUaG', 'grupo1');
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('Laura', 'Rojas Martínez', '1991-08-22', 'laura.fernandez', '$2y$10$u.JM/dvL6CttRtFBwl9unOqdL1/.C/AvTGLhGhBtre1.ebnENbLCu', 'grupo2');
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('Pablo', 'Jiménez Fernández', '1983-02-14', 'pablo.jimenez', '$2y$10$9tJAUJqgUOmMsy8oVMEwuebfhazhR.ubKMP.EuWSguGeCdf8hTP6G', 'grupo3');
+INSERT INTO Usuarios (nombre, apellidos, fecha_de_nacimiento, login, password, grupo) VALUES ('Isabel', 'Ruiz Ramirez', '1999-10-05', 'isabel.ruiz', '$2y$10$677cw01J5BV6fNGmkP5opeJ59buKINs28OsLQkA0Yi5rlS6pPEGqa', 'grupo1');
