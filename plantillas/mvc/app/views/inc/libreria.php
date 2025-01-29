@@ -1,4 +1,4 @@
-<? Php
+<?php
 function crearTablaBootstrap(array $datos) {
   // Verificamos si el array tiene datos
   if (empty($datos)) {
