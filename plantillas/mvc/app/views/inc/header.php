@@ -1,4 +1,3 @@
-<!-- cabecera de las páginas del site -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,12 +7,29 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
 <div class="container mt-5">
   <div class="list-group">
-  
-    <a href="<?php echo RUTA_URL; ?>/paginas/agregar" class="list-group-item list-group-item-action">Alta</a>    
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/paginas') !== false && strpos($_SERVER['REQUEST_URI'], 'agregar') === false ? 'active' : ''; ?>"
+          id="home-tab"
+          href="<?php echo RUTA_URL ?>/paginas"
+          role="tab"
+        >
+          Indice
+        </a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], 'agregar') !== false ? 'active' : ''; ?>"
+          id="profile-tab"
+          href="<?php echo RUTA_URL ?>/paginas/agregar"
+          role="tab"
+        >
+          Agregar
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
-
-
