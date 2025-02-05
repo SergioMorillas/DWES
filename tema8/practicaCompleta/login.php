@@ -7,9 +7,6 @@ if (isset($_SESSION['usuario'])) {
     exit;
 }
 
-foreach (getallheaders() as $name => $value) {
-    echo "$name: $value\n<br>";
-}
 
 // Procesar el formulario de inicio de sesión
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -159,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="login-container">
-        <h1>Iniciar sesión - Alquiler de Coches</h1>
+        <h1>Iniciar sesión</h1>
         <?php if (!empty($error)) { echo "<p class='error'>$error</p>"; } ?>
         <form action="" method="POST" onsubmit="return validateForm()">
             <div id="error" class="error"></div>

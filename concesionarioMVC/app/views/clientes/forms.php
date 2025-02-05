@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="fechaNac">Fecha de nacimiento <sup>*</sup></label>
-            <input type="date" name="fechaNac" class="form-control">
+            <input type="date" name="fechaNac" class="form-control" >
         </div>
         <div class="form-group">
             <label for="rango">Rango <sup>*</sup></label>

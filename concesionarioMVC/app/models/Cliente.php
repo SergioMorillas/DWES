@@ -1,20 +1,20 @@
 <?php
     
-class Usuario {
+class Cliente {
     private $db;
 
     public function __construct() {
         $this->db = new DataBase();
     }
 
-    public function obtenerUsuarios() {
+    public function obtenerClientes() {
         $this->db->query("SELECT * from usuarios");
 
         $resultados = $this->db->registros();
         return $resultados;
     }
 
-    public function agregarUsuario($datos){
+    public function agregarCliente($datos){
         $hash = password_hash($datos["contrasena"], PASSWORD_DEFAULT);
 
         $this->db->query("INSERT INTO usuarios (id, nombre, apellidos, fecha_de_nacimiento, login, grupo, password) VALUES (:id, :nombre, :apell, :fechaNac, :login, :rango, :contrasena)");
