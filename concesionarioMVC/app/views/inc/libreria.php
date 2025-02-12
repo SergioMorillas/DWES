@@ -28,8 +28,8 @@ function crearTablaBootstrap($datos)
         foreach ($fila as $valor) {
             $tabla .= "<td>$valor</td>";
         }
-        $tabla .= "<td><a href='$ruta/editar/".$fila->id."'>Editar</a></td>";
-        $tabla .= "<td><a href='$ruta/borrar/".$fila->id."'>Borrar</a></td>";
+        $tabla .= "<td><a href='$ruta"."clientes/editar/".$fila->id."'>Editar</a></td>";
+        $tabla .= "<td><a href='$ruta"."clientes/borrar/".$fila->id."'>Borrar</a></td>";
 
         $tabla .= "</tr>";
     }

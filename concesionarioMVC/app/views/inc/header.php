@@ -15,7 +15,7 @@
         <a
           class="nav-link <?php echo $_SERVER['REQUEST_URI'] === $rutaBase  ? 'active' : ''; ?>"
           id="home-tab"
-          href="<?php echo RUTA_URL ?>/clientes"
+          href="<?php echo RUTA_URL ?>clientes"
           role="tab"
         >
           Indice
@@ -25,7 +25,7 @@
         <a
         class="nav-link <?php echo $_SERVER['REQUEST_URI'] === "$rutaBase/forms"  ? 'active' : ''; ?>"
         id="profile-tab"
-          href="<?php echo RUTA_URL ?>/clientes/forms"
+          href="<?php echo RUTA_URL ?>clientes/forms"
           role="tab"
         >
           Agregar

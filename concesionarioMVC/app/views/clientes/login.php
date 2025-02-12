@@ -1,39 +1,3 @@
-<?php
-session_start();
-
-if (isset($_SESSION['usuario'])) {
-    header('Location: cpanel.php');  // Si el usuario ya está autenticado, redirigir al dashboard
-    exit;
-}
-
-
-// Procesar el formulario de inicio de sesión
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST['username'];
-    $contraseña = $_POST['password'];
-    $error = '';
-
-    try {
-
-        if ($registro->usuarioExiste($nombre)) {
-            if ($registro->verificarContraseña($nombre, $contraseña)) {
-                $_SESSION['usuario'] = $nombre;
-                $_SESSION['rango'] = $registro->obtenerRango($nombre);
-                header('Location: cpanel.php');
-                exit;
-            } else {
-                $error = 'Contraseña incorrecta.';
-            }
-        } else {
-            $error = 'El usuario no existe.';
-        }
-
-    } catch (Exception $e) {
-        $error = 'Error: ' . $e->getMessage();
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

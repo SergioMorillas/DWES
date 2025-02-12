@@ -1,0 +1,47 @@
+body {
+    background-color: #e6f9fc;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    color: #00abc7;
+  }
+  .navbar-dark .navbar-brand {
+    color: #00abc7;
+  }
+  .card {
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border-color: #00abc7;
+  }
+  .card-header,
+  .card-body,
+  .card-title {
+    color: #00abc7;
+  }
+  .carousel-item img {
+    object-fit: cover;
+    height: 500px;
+    border-radius: 8px;
+  }
+
+  .navbar {
+    background-color: #002b36;
+  }
+
+  .nav-item svg {
+    vertical-align: middle;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    color: #00abc7;
+    border-radius: 50%;
+  }
+
+  footer {
+    background-color: #002b36;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+  }
