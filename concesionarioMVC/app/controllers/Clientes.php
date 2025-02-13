@@ -35,7 +35,8 @@ class Clientes extends Controlador
                 if ($persona) {
                     if (password_verify($contraseña, $persona->password)) {
                         $_SESSION['cliente'] = $nombre;
-                        $_SESSION['rango']   = $persona->rango;
+                        print_r($persona);
+                        $_SESSION['rango']   = $persona->grupo;
                         $clientes = $this->clienteController->obtenerClientes();
                         $datos    = [
                             'clientes' => $clientes, // Array con todos los clientes

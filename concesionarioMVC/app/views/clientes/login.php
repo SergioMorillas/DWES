@@ -87,17 +87,6 @@
             color: red;
             margin-bottom: 1rem;
         }
-
-        .login-container .shake {
-            animation: shake 0.5s;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-        }
     </style>
     <script>
         function validateForm() {
@@ -108,8 +97,7 @@
 
             if (username === "" || password === "") {
                 error.textContent = "Por favor, rellena todos los campos.";
-                button.classList.add("shake");
-                setTimeout(() => button.classList.remove("shake"), 500);
+                moveButton(button);
                 return false;
             } else {
                 error.textContent = "";
@@ -124,17 +112,29 @@
 
             if (username !== "" && password !== "") {
                 button.classList.add("active");
+                button.style.transform = `translate(0px, 0px)`;
             } else {
                 button.classList.remove("active");
+
             }
+        }
+
+        function moveButton(button) {
+            const container = document.querySelector(".login-container");
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+            const offsetX = Math.random() * (containerRect.width - buttonRect.width);
+            const offsetY = Math.random() * (containerRect.height - buttonRect.height);
+
+            button.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
         }
     </script>
 </head>
 <body>
     <div class="login-container">
         <h1>Iniciar sesión</h1>
-        <?php if (!empty($datos['error'])) { echo "<p class='error'>" . $datos['error'] . "</p>"; } ?>
-        <form action="<?php echo RUTA_URL; ?>clientes/login" method="POST" onsubmit="return validateForm()">
+        <?php if (!empty($error)) { echo "<p class='error'>$error</p>"; } ?>
+        <form action="" method="POST" onsubmit="return validateForm()">
             <div id="error" class="error"></div>
             <div class="input-container">
                 <input type="text" id="username" name="username" placeholder=" " oninput="updateButtonState()">
