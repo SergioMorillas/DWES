@@ -4,55 +4,66 @@ class Clientes extends Controlador
     public function __construct()
     {
         //1) Acceso al modelo
-        $this->usuarioCliente = $this->modelo('Cliente');
+        $this->clienteController = $this->modelo('Cliente');
+        $this->usuarioController = $this->modelo('Usuario');
+
     }
 
     public function login()
     {
         session_start();
 
-        if (isset($_SESSION['usuario'])) {
+        if (isset($_SESSION['cliente'])) {
             // Si ya tiene sesión le mandamos a su panel de control
-            $this->vista('clientes/inicio');
+            $clientes = $this->clienteController->obtenerClientes();
+            $datos    = [
+                'clientes' => $clientes, // Array con todos los clientes
+            ];
+            $this->vista('clientes/inicio', $datos );
             exit;
         }
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nombre      = $_POST['username'];
-            $contraseña = $_POST['password'];
+            $contraseña  = $_POST['password'];
             $error       = '';
 
             try {
-                $clientes = usuarioCliente->obtenerClientes();
-
-                if ($registro->usuarioExiste($nombre)) {
-                    if ($registro->verificarContraseña($nombre, $contraseña)) {
-                        $_SESSION['usuario'] = $nombre;
-                        $_SESSION['rango']   = $registro->obtenerRango($nombre);
+                $registro = $this->clienteController;
+                $gestorLogin = $this->usuarioController;
+                $persona = ($gestorLogin->usuarioExiste($nombre));
+                if ($persona) {
+                    if (password_verify($contraseña, $persona->password)) {
+                        $_SESSION['cliente'] = $nombre;
+                        $_SESSION['rango']   = $persona->rango;
+                        $clientes = $this->clienteController->obtenerClientes();
+                        $datos    = [
+                            'clientes' => $clientes, // Array con todos los clientes
+                        ];
+                        $this->vista('clientes/inicio', $datos);
                         exit;
                     } else {
                         $error = 'Contraseña incorrecta.';
                     }
                 } else {
-                    $error = 'El usuario no existe.';
+                    $error = 'El cliente no existe.';
                 }
 
             } catch (Exception $e) {
                 $error = 'Error: ' . $e->getMessage();
             }
+            $mostrarError  = ['error' => $error];
+            $this->vista('clientes/login', $mostrarError);
         }
-        $this->vista('clientes/login');
+        $this->vista('clientes/login' );
     }
 
     public function index()
     {
-        // Podemos pasar parametros a la vista que queramos
-        // Para ello nos creamos un array con los parámetros
-        $usuarios = $this->usuarioCliente->obtenerClientes();
+        $clientes = $this->clienteController->obtenerClientes();
         $datos    = [
-            'usuarios' => $usuarios, // Array con todos los usuarios
+            'clientes' => $clientes, // Array con todos los clientes
         ];
-        // Le pasamos a la vista los parametros
         $this->vista('clientes/inicio', $datos);
     }
 
@@ -60,27 +71,31 @@ class Clientes extends Controlador
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $datos = [
-                'nombre'     => trim($_POST['nombre']),
-                'apell'      => trim($_POST['apell']),
-                'fechaNac'   => trim($_POST['fechaNac']),
-                'rango'      => trim($_POST['rango']),
-                'login'      => trim($_POST['login']),
-                'contrasena' => trim($_POST['contrasena']),
+                'documento'    => trim($_POST['documento']),
+                'nombre'       => trim($_POST['nombre']),
+                'apell'        => trim($_POST['apell']),
+                'fechaNac'     => trim($_POST['fechaNac']),
+                'email'        => trim($_POST['email']),
+                'telefono'     => trim($_POST['telefono']),
+                'direccion'    => trim($_POST['direccion']),
+                'fotografia'   => trim($_POST['fotografia']),
             ];
 
-            if ($this->usuarioCliente->agregarCliente($datos)) {
+            if ($this->clienteController->agregarCliente($datos)) {
                 redireccionar('/clientes');
             } else {
                 die("No se pudo realizar el alta");
             }
         } else {
             $datos = [
-                'nombre'     => '',
-                'apell'      => '',
-                'fechaNac'   => '',
-                'rango'      => '',
-                'login'      => '',
-                'contrasena' => '',
+                'documento'    => '',
+                'nombre'       => '',
+                'apell'        => '',
+                'fechaNac'     => '',
+                'email'        => '',
+                'telefono'     => '',
+                'direccion'    => '',
+                'fotografia'   => '',
             ];
             $this->vista('clientes/agregar', $datos);
         }
@@ -90,31 +105,34 @@ class Clientes extends Controlador
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $datos = [
-                'id'         => $id,
-                'nombre'     => trim($_POST['nombre']),
-                'apell'      => trim($_POST['apell']),
-                'fechaNac'   => trim($_POST['fechaNac']),
-                'rango'      => trim($_POST['rango']),
-                'login'      => trim($_POST['login']),
-                'contrasena' => trim($_POST['contrasena']),
+                'id'           => $id,
+                'documento'    => trim($_POST['documento']),
+                'nombre'       => trim($_POST['nombre']),
+                'apell'        => trim($_POST['apell']),
+                'fechaNac'     => trim($_POST['fechaNac']),
+                'email'        => trim($_POST['email']),
+                'telefono'     => trim($_POST['telefono']),
+                'direccion'    => trim($_POST['direccion']),
+                'fotografia'   => trim($_POST['fotografia']),
             ];
 
-            if ($this->usuarioCliente->actualizarCliente($datos)) {
+            if ($this->clienteController->actualizarCliente($datos)) {
                 redireccionar('/clientes');
             } else {
                 die("No se pudo actualizar el cliente");
             }
         } else {
-            // Obtener información del cliente desde el modelo
-            $cliente = $this->usuarioCliente->obtenerClientePorId($id);
+            $cliente = $this->clienteController->obtenerClientePorId($id);
             $datos   = [
-                'id'         => $cliente->id,
-                'nombre'     => $cliente->nombre,
-                'apell'      => $cliente->apell,
-                'fechaNac'   => $cliente->fechaNac,
-                'rango'      => $cliente->rango,
-                'login'      => $cliente->login,
-                'contrasena' => $cliente->contrasena,
+                'id'           => $cliente->cliente_id,
+                'documento'    => $cliente->documento_identidad,
+                'nombre'       => $cliente->nombre,
+                'apell'        => $cliente->apellidos,
+                'fechaNac'     => $cliente->fecha_nacimiento,
+                'email'        => $cliente->email,
+                'telefono'     => $cliente->telefono,
+                'direccion'    => $cliente->direccion,
+                'fotografia'   => $cliente->fotografia,
             ];
             $this->vista('clientes/editar', $datos);
         }
@@ -123,22 +141,23 @@ class Clientes extends Controlador
     public function borrar($id)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if ($this->usuarioCliente->borrarCliente($id)) {
+            if ($this->clienteController->borrarCliente($id)) {
                 redireccionar('/clientes');
             } else {
                 die("No se pudo borrar el cliente");
             }
         } else {
-            // Obtener información del cliente desde el modelo
-            $cliente = $this->usuarioCliente->obtenerClientePorId($id);
+            $cliente = $this->clienteController->obtenerClientePorId($id);
             $datos   = [
-                'id'         => $cliente->id,
-                'nombre'     => $cliente->nombre,
-                'apell'      => $cliente->apell,
-                'fechaNac'   => $cliente->fechaNac,
-                'rango'      => $cliente->rango,
-                'login'      => $cliente->login,
-                'contrasena' => $cliente->contrasena,
+                'id'           => $cliente->cliente_id,
+                'documento'    => $cliente->documento_identidad,
+                'nombre'       => $cliente->nombre,
+                'apell'        => $cliente->apellidos,
+                'fechaNac'     => $cliente->fecha_nacimiento,
+                'email'        => $cliente->email,
+                'telefono'     => $cliente->telefono,
+                'direccion'    => $cliente->direccion,
+                'fotografia'   => $cliente->fotografia,
             ];
             $this->vista('clientes/borrar', $datos);
         }
@@ -149,3 +168,4 @@ class Clientes extends Controlador
         $this->vista('clientes/forms', $datos);
     }
 }
+?>

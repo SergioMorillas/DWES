@@ -6,8 +6,7 @@
 ?>
 <div class="container mt-5">
     <h2 class="mb-4">Listado de usuarios</h2>
-
-    <?php echo crearTablaBootstrap($datos["usuarios"]); ?>
+    <?php echo crearTablaBootstrap($datos["clientes"]); ?>
 </div>
 
 <?php

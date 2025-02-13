@@ -8,14 +8,20 @@ class Cliente {
     }
 
     public function obtenerClientes() {
-        $this->db->query("SELECT * FROM usuarios");
+        $this->db->query("SELECT * FROM cliente");
 
         $resultados = $this->db->registros();
         return $resultados;
     }
+    public function clienteExiste($email){
+        $this->db->query("SELECT * FROM cliente WHERE email = :email");
+        $this->db->bind(":email", $email);
 
+        $fila = $this->db->registro();
+        return $fila;
+    }
     public function obtenerClientePorId($id) {
-        $this->db->query("SELECT * FROM usuarios WHERE id = :id");
+        $this->db->query("SELECT * FROM cliente WHERE cliente_id = :id");
         $this->db->bind(":id", $id);
 
         $fila = $this->db->registro();
@@ -23,17 +29,18 @@ class Cliente {
     }
 
     public function agregarCliente($datos) {
-        $hash = password_hash($datos["contrasena"], PASSWORD_DEFAULT);
-
-        $this->db->query("INSERT INTO usuarios (nombre, apellidos, fecha_de_nacimiento, login, grupo, password) VALUES (:nombre, :apell, :fechaNac, :login, :rango, :contrasena)");
+        $this->db->query("INSERT INTO cliente (documento_identidad, nombre, apellidos, fecha_nacimiento, email, telefono, direccion, fotografia) 
+                          VALUES (:documento, :nombre, :apell, :fechaNac, :email, :telefono, :direccion, :fotografia)");
 
         // Vinculamos los valores
+        $this->db->bind(":documento", $datos["documento"]);
         $this->db->bind(":nombre", $datos["nombre"]);
         $this->db->bind(":apell", $datos["apell"]);
         $this->db->bind(":fechaNac", $datos["fechaNac"]);
-        $this->db->bind(":rango", $datos["rango"]);
-        $this->db->bind(":login", $datos["login"]);
-        $this->db->bind(":contrasena", $hash);
+        $this->db->bind(":email", $datos["email"]);
+        $this->db->bind(":telefono", $datos["telefono"]);
+        $this->db->bind(":direccion", $datos["direccion"]);
+        $this->db->bind(":fotografia", $datos["fotografia"]);
 
         // Ejecutar la consulta
         if ($this->db->execute()) {
@@ -44,18 +51,19 @@ class Cliente {
     }
 
     public function actualizarCliente($datos) {
-        $hash = password_hash($datos["contrasena"], PASSWORD_DEFAULT);
-
-        $this->db->query("UPDATE usuarios SET nombre = :nombre, apellidos = :apell, fecha_de_nacimiento = :fechaNac, login = :login, grupo = :rango, password = :contrasena WHERE id = :id");
+        $this->db->query("UPDATE cliente SET documento_identidad = :documento, nombre = :nombre, apellidos = :apell, fecha_nacimiento = :fechaNac, email = :email, telefono = :telefono, direccion = :direccion, fotografia = :fotografia 
+                          WHERE cliente_id = :id");
 
         // Vinculamos los valores
         $this->db->bind(":id", $datos["id"]);
+        $this->db->bind(":documento", $datos["documento"]);
         $this->db->bind(":nombre", $datos["nombre"]);
         $this->db->bind(":apell", $datos["apell"]);
         $this->db->bind(":fechaNac", $datos["fechaNac"]);
-        $this->db->bind(":rango", $datos["rango"]);
-        $this->db->bind(":login", $datos["login"]);
-        $this->db->bind(":contrasena", $hash);
+        $this->db->bind(":email", $datos["email"]);
+        $this->db->bind(":telefono", $datos["telefono"]);
+        $this->db->bind(":direccion", $datos["direccion"]);
+        $this->db->bind(":fotografia", $datos["fotografia"]);
 
         // Ejecutar la consulta
         if ($this->db->execute()) {
@@ -66,7 +74,7 @@ class Cliente {
     }
 
     public function borrarCliente($id) {
-        $this->db->query("DELETE FROM usuarios WHERE id = :id");
+        $this->db->query("DELETE FROM cliente WHERE cliente_id = :id");
         $this->db->bind(":id", $id);
 
         // Ejecutar la consulta
@@ -77,3 +85,4 @@ class Cliente {
         }
     }
 }
+?>

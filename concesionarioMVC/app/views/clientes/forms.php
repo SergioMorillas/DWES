@@ -2,10 +2,13 @@
     // Cargamos el header previamente
     require RUTA_APP . '/views/inc/header.php';
 ?>
-<!-- <a href="<?php echo RUTA_URL; ?>/paginas" class="btn btn-secondary mb-3">Volver</a> -->
 <div class="container mt-5">
-    <h2 class="mb-4">Agregar usuario</h2>
-    <form action="<?php echo RUTA_URL; ?>/paginas/agregar" method="POST">
+    <h2 class="mb-4">Agregar/Editar cliente</h2>
+    <form action="<?php echo RUTA_URL; ?>clientes/agregar" method="POST">
+        <div class="form-group">
+            <label for="documento">Documento de Identidad <sup>*</sup></label>
+            <input type="text" name="documento" class="form-control">
+        </div>
         <div class="form-group">
             <label for="nombre">Nombre <sup>*</sup></label>
             <input type="text" name="nombre" class="form-control">
@@ -19,18 +22,22 @@
             <input type="date" name="fechaNac" class="form-control" >
         </div>
         <div class="form-group">
-            <label for="rango">Rango <sup>*</sup></label>
-            <input type="text" name="rango" class="form-control">
+            <label for="email">Email <sup>*</sup></label>
+            <input type="email" name="email" class="form-control">
         </div>
         <div class="form-group">
-            <label for="login">Login <sup>*</sup></label>
-            <input type="text" name="login" class="form-control">
+            <label for="telefono">Teléfono <sup>*</sup></label>
+            <input type="text" name="telefono" class="form-control">
         </div>
         <div class="form-group">
-            <label for="contrasena">Contraseña <sup>*</sup></label>
-            <input type="password" name="contrasena" class="form-control">
+            <label for="direccion">Dirección <sup>*</sup></label>
+            <input type="text" name="direccion" class="form-control">
         </div>
-        <input type="submit" value="Agregar usuario" class="btn btn-primary mt-3">
+        <div class="form-group">
+            <label for="fotografia">Fotografía <sup>*</sup></label>
+            <input type="text" name="fotografia" class="form-control">
+        </div>
+        <input type="submit" value="Agregar cliente" class="btn btn-primary mt-3">
     </form>
 </div>
 <?php
