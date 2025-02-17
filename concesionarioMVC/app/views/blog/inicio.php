@@ -33,7 +33,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo RUTA_URL . "clientes/login"?>"
+            <a class="nav-link" href="<?php echo RUTA_URL . "usuarios/login"?>"
               >Administración 
               <svg
                 xmlns="http://www.w3.org/2000/svg"

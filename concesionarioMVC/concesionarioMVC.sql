@@ -138,10 +138,10 @@ CREATE TABLE `vehiculo` (
   `matricula` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `marca` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `modelo` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `anio` int DEFAULT NULL,
-  `color` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `precio` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`matricula`)
+  `potencia` int DEFAULT NULL,
+  `velocidadMaxima` int DEFAULT NULL,
+  `imagen` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`matricula`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
